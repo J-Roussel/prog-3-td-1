@@ -1,6 +1,7 @@
 package app.prog.service;
 
 import app.prog.model.AuthorEntity;
+import app.prog.model.BookEntity;
 import app.prog.repository.AuthorRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,5 +16,10 @@ public class AuthorService {
     public List<AuthorEntity> getAuthors(){
         return repository.findAll();
     }
+
+    public List<AuthorEntity> createAuthors(List<AuthorEntity> toCreate) {
+        return repository.saveAll(toCreate);
+    }
+
 
 }
