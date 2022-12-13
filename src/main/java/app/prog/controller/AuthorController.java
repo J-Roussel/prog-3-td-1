@@ -53,4 +53,8 @@ public class AuthorController {
                 .toList();
     }
 
+    @DeleteMapping("/author/{id}")
+    public AuthorResponse deleteAuthor(@PathVariable Integer authorId){
+        return mapper.toRest(service.deleteAuthor(authorId));
+    }
 }

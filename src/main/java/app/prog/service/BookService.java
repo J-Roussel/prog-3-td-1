@@ -1,5 +1,6 @@
 package app.prog.service;
 
+import app.prog.model.AuthorEntity;
 import app.prog.model.BookEntity;
 import app.prog.repository.BookRepository;
 import lombok.AllArgsConstructor;
@@ -25,16 +26,7 @@ public class BookService {
         return repository.saveAll(toUpdate);
     }
 
-    //TODO-3: should I use Integer here or int ? Why ?
     public BookEntity deleteBook(int BookEntityId) {
-        /*
-        TIPS: From the API, the Class Optional<T> is :
-        A container object which may or may not contain a non-null value.
-        If a value is present, isPresent() returns true.
-        If no value is present, the object is considered empty and isPresent() returns false.
-
-        T is the type of the value, for example : here the class type is BookEntity
-         */
         Optional<BookEntity> optional = repository.findById(String.valueOf(BookEntityId));
         if (optional.isPresent()) {
             repository.delete(optional.get());
@@ -51,4 +43,6 @@ public class BookService {
             throw new RuntimeException("BookEntity." + BookEntityId + " not found");
         }
     }
+
+
 }
