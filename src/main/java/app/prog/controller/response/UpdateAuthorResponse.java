@@ -9,7 +9,6 @@ import lombok.Data;
 @Data
 @Builder
 public class UpdateAuthorResponse {
-
     private long id;
     private String name;
     private String particularity;

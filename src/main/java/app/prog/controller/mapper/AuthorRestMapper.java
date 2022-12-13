@@ -3,6 +3,7 @@ package app.prog.controller.mapper;
 import app.prog.controller.response.AuthorResponse;
 import app.prog.controller.response.CreateAuthorResponse;
 import app.prog.controller.response.CreateBookResponse;
+import app.prog.controller.response.UpdateAuthorResponse;
 import app.prog.model.AuthorEntity;
 import app.prog.model.BookEntity;
 import org.springframework.stereotype.Component;
@@ -21,6 +22,14 @@ public class AuthorRestMapper {
 
     public AuthorEntity toDomain(CreateAuthorResponse rest) {
         return AuthorEntity.builder()
+                .name(rest.getName())
+                .particularity(rest.getParticularity())
+                .build();
+    }
+
+    public AuthorEntity toDomain(UpdateAuthorResponse rest) {
+        return AuthorEntity.builder()
+                .id(rest.getId())
                 .name(rest.getName())
                 .particularity(rest.getParticularity())
                 .build();

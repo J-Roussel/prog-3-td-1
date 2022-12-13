@@ -9,10 +9,7 @@ import app.prog.model.AuthorEntity;
 import app.prog.model.BookEntity;
 import app.prog.service.AuthorService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -39,6 +36,18 @@ public class AuthorController {
                 .toList();
 
         return service.createAuthors(domain)
+                .stream()
+                .map(mapper::toRest)
+                .toList();
+    }
+
+    @PutMapping("/authors")
+    public List<AuthorResponse> updateAuthors(@RequestBody List<UpdateAuthorResponse> toUpdate){
+        List<AuthorEntity> domain = toUpdate.stream()
+                .map(mapper::toDomain)
+                .toList();
+
+        return service.updateAuthors(domain)
                 .stream()
                 .map(mapper::toRest)
                 .toList();

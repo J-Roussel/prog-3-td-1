@@ -21,5 +21,7 @@ public class AuthorService {
         return repository.saveAll(toCreate);
     }
 
-
+    public List<AuthorEntity> updateAuthors(List<AuthorEntity> toUpdate) {
+        return repository.saveAll(toUpdate);
+    }
 }
